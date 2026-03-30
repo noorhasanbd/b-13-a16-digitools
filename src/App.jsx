@@ -1,13 +1,13 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
-import heroImg from "./assets/hero.png";
-import "./App.css";
+import Navbar from "./components/navbar/Navbar";
+import Banner from "./components/homepage/banner/Banner";
+
 
 function App() {
   return (
     <>
-      <h2 className="bg-amber-500">Hello Using Roboto</h2>
+      <Navbar/>
+      <Banner/>
     </>
   );
 }
