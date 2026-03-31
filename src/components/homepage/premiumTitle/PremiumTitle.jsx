@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { TiTick } from "react-icons/ti";
+import ProductCard from "../productCards/ProductCard";
 
-const PremiumTitle = () => {
+const PremiumTitle = ({promiseData}) => {
   const [selectedType, setSelectedType] = useState("products");
   const handleSelectedType = (selectedRef) => {
     setSelectedType(selectedRef);
   };
+  const productsData=use(promiseData);
+  
+  
   return (
     <div className="container mx-auto mt-16 space-y-5 ">
       <div className="text-center space-y-3">
@@ -30,29 +34,12 @@ const PremiumTitle = () => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 justify-items-center items-center">
-        <div className="card w-96 bg-base-100 shadow-xl rounded-3xl">
-          <div className="card-body">
-            <span className="badge badge-xs bg-[#FEF3C6] text-[#BB4D00] text-left">Best Seller</span>
-            <div className="flex-row justify-between">
-              <h2 className="text-3xl font-bold">AI Writing Pro</h2>
-              <p className="text-md">Generate high-quality content, blogs, and marketing copy in seconds with advanced AI.</p>
-            </div>
-            <ul className="mt-6 flex flex-col gap-2 text-xs">
-              <li className="flex justify-baseline items-center">
-                <TiTick className="text-green-400 text-xl"/>
-                <span>Unlimited AI generations</span>
-              </li>
-              <li className="flex justify-baseline items-center">
-                <TiTick className="text-green-400 text-xl"/>
-                <span>Unlimited AI generations</span>
-              </li>
-            </ul>
-            <div className="mt-6">
-              <button className="btn btn-primary btn-block rounded-3xl text-center">Subscribe</button>
-            </div>
-          </div>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center items-center gap-8">
+        {
+          productsData.map(productData=>
+            <ProductCard key={productData.productId} productData={productData}/>
+          )
+        }
       </div>
     </div>
   );

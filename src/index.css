@@ -7,3 +7,10 @@
   font-optical-sizing: auto;
   font-weight: 600;
 }
+p{
+  font-size: 16px;
+  color: #627382;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700; /* 700 is the standard value for bold */
+}
