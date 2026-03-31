@@ -4,15 +4,23 @@ import Banner from "./components/homepage/banner/Banner";
 import Stats from "./components/homepage/stats/Stats";
 import PremiumTitle from "./components/homepage/premiumTitle/PremiumTitle";
 import GetStarted from "./components/homepage/getStarted/GetStarted";
+import PricingTitle from "./components/homepage/pricingSection/PricingTitle";
 
 const fetchPlayer = async () => {
   const res = (await fetch("/products.json")).json();
   return res;
 };
+const fetchSteps= async ()=>{
+
+  const stepRes= (await fetch("/getStarted.json")).json()
+  return stepRes;
+}
 
 function App() {
   const promiseData= fetchPlayer();
-  console.log(promiseData)
+  const promiseStep= fetchSteps();
+  // console.log(promiseData)
+  console.log(promiseStep);
   return (
     
     <>
@@ -25,8 +33,10 @@ function App() {
       </Suspense>
 
 
-      <GetStarted/>
-      
+      <Suspense fallback={<span className="loading loading-ring loading-lg"></span>}>
+        <GetStarted promiseStep={promiseStep}/>
+      </Suspense>
+      <PricingTitle/>      
       
     </>
   );
