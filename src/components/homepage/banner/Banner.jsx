@@ -18,7 +18,7 @@ const Banner = () => {
           <a className="btn border-none bg-linear-to-r from-[#4F39F6] to-[#9514FA] text-white transition-transform  hover:scale-105 active:scale-95 rounded-2xl">
             Explore Products
           </a>
-          <button class="btn btn-outline btn-primary rounded-2xl">
+          <button className="btn btn-outline btn-primary rounded-2xl">
             Watch Demo
           </button>
         </div>
