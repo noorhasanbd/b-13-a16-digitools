@@ -1,7 +1,14 @@
 import React from "react";
 import { TiTick } from "react-icons/ti";
+import { toast } from "react-toastify";
 
-const ProductCard = ({ productData }) => {
+const ProductCard = ({
+  productData,
+  cart,
+  setCart,
+  selectedProduct,
+  setSelectedProduct,
+}) => {
   const bestSeller = " bg-[#FEF3C6] text-[#BB4D00]";
   const popular = "bg-[#E1E7FF] text-[#9514FA]";
   const newBadge = "bg-[#DBFCE7] text-[#0A883E]";
@@ -14,6 +21,13 @@ const ProductCard = ({ productData }) => {
     } else {
       return newBadge;
     }
+  };
+  const handleBuy = () => {
+    setCart(cart + 1);
+    setSelectedProduct([...selectedProduct, productData]);
+    console.log(selectedProduct);
+    toast.success(`${productData.productName} is added`);
+    return setCart;
   };
   return (
     <div>
@@ -33,7 +47,10 @@ const ProductCard = ({ productData }) => {
           <ul className="mt-6 flex flex-col gap-2 text-md">
             {productData.productFeatures.map((feature, index) => {
               return (
-                <li key={index} className="flex justify-baseline items-center gap-1">
+                <li
+                  key={index}
+                  className="flex justify-baseline items-center gap-1"
+                >
                   <TiTick className="text-green-400 text-xl" />
                   <span>{feature}</span>
                 </li>
@@ -41,9 +58,23 @@ const ProductCard = ({ productData }) => {
             })}
           </ul>
           <div className="mt-6">
-            <button className="btn btn-primary btn-block rounded-3xl  text-center p-6">
-              Buy Now
-            </button>
+            {selectedProduct?.some(
+              (item) => item.productId === productData.productId,
+            ) ? (
+              <button
+                className="btn btn-secondary btn-block rounded-3xl text-center p-6"
+                disabled
+              >
+                Already in Cart
+              </button>
+            ) : (
+              <button
+                className="btn btn-primary btn-block rounded-3xl text-center p-6"
+                onClick={handleBuy}
+              >
+                Buy Now
+              </button>
+            )}
           </div>
         </div>
       </div>

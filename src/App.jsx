@@ -7,6 +7,7 @@ import GetStarted from "./components/homepage/getStarted/GetStarted";
 import PricingTitle from "./components/homepage/pricingSection/PricingTitle";
 import WorkflowSection from "./components/homepage/workflowSection/WorkflowSection";
 import Footer from "./components/footerMenu/Footer";
+import { ToastContainer } from "react-toastify";
 
 
 const fetchPlayer = async () => {
@@ -31,7 +32,7 @@ function App() {
   const promisePricing=fetchPricing();
   const [cart, setCart]=useState(0);
   // console.log(promiseData)
-  console.log(promiseStep);
+  // console.log(promiseStep);
   return (
     
     <>
@@ -54,6 +55,8 @@ function App() {
 
     <WorkflowSection/>
     <Footer/>
+
+    <ToastContainer/>
 
       
 

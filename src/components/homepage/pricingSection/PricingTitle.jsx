@@ -4,7 +4,7 @@ import { TiTick } from "react-icons/ti";
 
 const PricingTitle = ({promisePricing}) => {
   const pricingData=use(promisePricing)
-  console.log(pricingData)
+  // console.log(pricingData)
   return (
     
     <div>

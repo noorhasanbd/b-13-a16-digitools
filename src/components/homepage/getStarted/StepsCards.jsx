@@ -1,7 +1,7 @@
 import React from "react";
 
 const StepsCards = ({step}) => {
-    console.log(step.stepId);
+    // console.log(step.stepId);
   return (
     <div>
       <div className="card w-96 bg-base-100  shadow-sm px-4  rounded-2xl">

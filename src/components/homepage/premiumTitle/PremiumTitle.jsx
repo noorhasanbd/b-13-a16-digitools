@@ -8,6 +8,7 @@ const PremiumTitle = ({promiseData, cart, setCart}) => {
   const handleSelectedType = (selectedRef) => {
     setSelectedType(selectedRef);
   };
+  const [selectedProduct, setSelectedProduct]=useState([])
   const productsData=use(promiseData);
   
   
@@ -38,10 +39,10 @@ const PremiumTitle = ({promiseData, cart, setCart}) => {
       {selectedType==='products'? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center items-center gap-8">
         {
           productsData.map(productData=>
-            <ProductCard key={productData.productId} productData={productData}/>
+            <ProductCard key={productData.productId} productData={productData} cart={cart} setCart={setCart} selectedProduct={selectedProduct} setSelectedProduct={setSelectedProduct}/>
           )
         }
-      </div>: <Cart/> }
+      </div>: <Cart cart={cart} setCart={setCart} selectedProduct={selectedProduct} setSelectedProduct={setSelectedProduct}/> }
     </div>
   );
 };

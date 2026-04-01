@@ -5,7 +5,7 @@ import StepsCards from "./StepsCards";
 const GetStarted = ({promiseStep}) => {
   
   const steps= use(promiseStep);
-  console.log(promiseStep)
+  // console.log(promiseStep)
   return (
     <div className="bg-[#F9FAFC] my-18">
       <div className="container mx-auto py-8">
