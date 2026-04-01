@@ -6,6 +6,8 @@ import PremiumTitle from "./components/homepage/premiumTitle/PremiumTitle";
 import GetStarted from "./components/homepage/getStarted/GetStarted";
 import PricingTitle from "./components/homepage/pricingSection/PricingTitle";
 import WorkflowSection from "./components/homepage/workflowSection/WorkflowSection";
+import Footer from "./components/footerMenu/Footer";
+
 
 const fetchPlayer = async () => {
   const res = (await fetch("/products.json")).json();
@@ -27,16 +29,17 @@ function App() {
   const promiseData= fetchPlayer();
   const promiseStep= fetchSteps();
   const promisePricing=fetchPricing();
+  const [cart, setCart]=useState(0);
   // console.log(promiseData)
   console.log(promiseStep);
   return (
     
     <>
-      <Navbar/>
+      <Navbar cart={cart}/>
       <Banner/>
       <Stats/>
       <Suspense fallback={<span className="loading loading-ring loading-lg"></span>}>
-        <PremiumTitle promiseData={promiseData}/>
+        <PremiumTitle promiseData={promiseData} cart={cart} setCart={setCart}/>
 
       </Suspense>
 
@@ -50,6 +53,7 @@ function App() {
       </Suspense>
 
     <WorkflowSection/>
+    <Footer/>
 
       
 

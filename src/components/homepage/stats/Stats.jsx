@@ -9,15 +9,15 @@ const Stats = () => {
 
                 <div className='text-center space-y-3'>
                     <h3 className='text-6xl'>50K+</h3>
-                    <p>Active User</p>
+                    <p className='text-white'>Active User</p>
                 </div>
                 <div className='text-center px-20 border-x-2 border-white/30 space-y-3'>
                     <h3 className='text-6xl'>200+</h3>
-                    <p>Premium Tools</p>
+                    <p className='text-white'>Premium Tools</p>
                 </div>
                 <div className='text-center space-y-3'>
                     <h3 className='text-6xl'>4.9</h3>
-                    <p>Rating</p>
+                    <p className='text-white'>Rating</p>
                 </div>
             </div>
             

@@ -1,8 +1,9 @@
 import React, { use, useState } from "react";
 import { TiTick } from "react-icons/ti";
 import ProductCard from "../productCards/ProductCard";
+import Cart from "../productCards/Cart";
 
-const PremiumTitle = ({promiseData}) => {
+const PremiumTitle = ({promiseData, cart, setCart}) => {
   const [selectedType, setSelectedType] = useState("products");
   const handleSelectedType = (selectedRef) => {
     setSelectedType(selectedRef);
@@ -30,17 +31,17 @@ const PremiumTitle = ({promiseData}) => {
             className={`px-8 py-3 rounded-full ${selectedType === "cart" ? "bg-linear-to-r from-[#4F39F6] to-[#9514FA] text-white" : "bg-tra"}  font-semibold transition-all hover:opacity-90`}
             onClick={() => handleSelectedType("cart")}
           >
-            Cart (2)
+            Cart ({cart})
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center items-center gap-8">
+      {selectedType==='products'? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center items-center gap-8">
         {
           productsData.map(productData=>
             <ProductCard key={productData.productId} productData={productData}/>
           )
         }
-      </div>
+      </div>: <Cart/> }
     </div>
   );
 };
