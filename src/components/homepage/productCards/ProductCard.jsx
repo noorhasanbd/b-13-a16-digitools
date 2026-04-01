@@ -17,7 +17,7 @@ const ProductCard = ({ productData }) => {
   };
   return (
     <div>
-      <div className="card  bg-base-100 shadow-md rounded-3xl border border-gray-200 p-2 space-y-4">
+      <div className="card w-96 bg-base-100 shadow-md rounded-3xl border border-gray-200 p-2 space-y-4">
         <div className="card-body">
           <div className="flex justify-end">
             <span
@@ -31,12 +31,13 @@ const ProductCard = ({ productData }) => {
             <p className="text-base">{productData.productDescription}</p>
           </div>
           <ul className="mt-6 flex flex-col gap-2 text-md">
-            {productData.productFeatures.map((feature) => {
-                return <li className="flex justify-baseline items-center gap-1">
-                <TiTick className="text-green-400 text-xl" />
-                <span>{feature}</span>
-              </li>
-              ;
+            {productData.productFeatures.map((feature, index) => {
+              return (
+                <li key={index} className="flex justify-baseline items-center gap-1">
+                  <TiTick className="text-green-400 text-xl" />
+                  <span>{feature}</span>
+                </li>
+              );
             })}
           </ul>
           <div className="mt-6">

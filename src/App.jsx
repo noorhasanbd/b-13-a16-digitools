@@ -5,6 +5,7 @@ import Stats from "./components/homepage/stats/Stats";
 import PremiumTitle from "./components/homepage/premiumTitle/PremiumTitle";
 import GetStarted from "./components/homepage/getStarted/GetStarted";
 import PricingTitle from "./components/homepage/pricingSection/PricingTitle";
+import WorkflowSection from "./components/homepage/workflowSection/WorkflowSection";
 
 const fetchPlayer = async () => {
   const res = (await fetch("/products.json")).json();
@@ -16,9 +17,16 @@ const fetchSteps= async ()=>{
   return stepRes;
 }
 
+const fetchPricing= async ()=>{
+
+  const pricingRes= (await fetch("/pricing.json")).json()
+  return pricingRes;
+}
+
 function App() {
   const promiseData= fetchPlayer();
   const promiseStep= fetchSteps();
+  const promisePricing=fetchPricing();
   // console.log(promiseData)
   console.log(promiseStep);
   return (
@@ -36,7 +44,16 @@ function App() {
       <Suspense fallback={<span className="loading loading-ring loading-lg"></span>}>
         <GetStarted promiseStep={promiseStep}/>
       </Suspense>
-      <PricingTitle/>      
+
+      <Suspense fallback={<span className="loading loading-ring loading-lg"></span>}>
+        <PricingTitle promisePricing={promisePricing}/>  
+      </Suspense>
+
+    <WorkflowSection/>
+
+      
+
+
       
     </>
   );
