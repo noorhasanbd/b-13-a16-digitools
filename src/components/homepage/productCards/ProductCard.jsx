@@ -41,6 +41,7 @@ const ProductCard = ({
             </span>
           </div>
           <div className="flex-row justify-between space-y-3">
+            <img src={productData.productIcon} width="50px "alt="" />
             <h2 className="text-3xl font-bold">{productData.productName}</h2>
             <p className="text-base">{productData.productDescription}</p>
           </div>

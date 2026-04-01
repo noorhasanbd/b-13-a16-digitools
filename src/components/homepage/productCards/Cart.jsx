@@ -5,13 +5,14 @@ import { FaUser } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 
 const Cart = ({ cart, setCart, selectedProduct, setSelectedProduct }) => {
-  const handleDeleteProduct= (deleteProduct)=>{
-
-    const updatedProduct=selectedProduct.filter((selectedPro)=>selectedPro.productName!=deleteProduct.productName);
-    setSelectedProduct(updatedProduct)
-    setCart(cart-1)
+  const handleDeleteProduct = (deleteProduct) => {
+    const updatedProduct = selectedProduct.filter(
+      (selectedPro) => selectedPro.productName != deleteProduct.productName,
+    );
+    setSelectedProduct(updatedProduct);
+    setCart(cart - 1);
     console.log(updatedProduct);
-  }
+  };
   return (
     <div>
       <div className="card bg-base-200 w-full shadow-md p-4 mb-16">
@@ -20,7 +21,7 @@ const Cart = ({ cart, setCart, selectedProduct, setSelectedProduct }) => {
           <div className="">
             {selectedProduct.length === 0 ? (
               <div className="flex justify-center items-center">
-              <FaShoppingCart className="text-8xl text-gray-400" />
+                <FaShoppingCart className="text-8xl text-gray-400" />
               </div>
             ) : (
               <div className="">
@@ -30,22 +31,24 @@ const Cart = ({ cart, setCart, selectedProduct, setSelectedProduct }) => {
                       <div>
                         <img
                           className="size-10 rounded-box"
-                          src="https://img.daisyui.com/images/profile/demo/1@94.webp"
+                          src={selectedPro.productIcon}
                         />
                       </div>
                       <div>
                         <div className="flex items-center justify-start gap-2 text-xl">
-                          <FaUser />{" "}
                           <h2 className="font-bold">
                             {selectedPro.productName}
                           </h2>
                         </div>
-                        <div className="text-xs uppercase font-semibold opacity-60">
+                        <div className="text-xs uppercase font-semibold opacity-60">$
                           {selectedPro.productPrice}
                         </div>
                       </div>
 
-                      <button className="btn bg-none" onClick={()=>handleDeleteProduct(selectedPro)}>
+                      <button
+                        className="btn bg-none"
+                        onClick={() => handleDeleteProduct(selectedPro)}
+                      >
                         <MdDelete color="red" />
                       </button>
                     </li>
